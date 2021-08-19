@@ -33,7 +33,7 @@ gulp.task('less', function () {
 		.pipe(less())
 		.pipe(autoprefixer())
 		.pipe(concat(config.output.cssName))
-		.pipe(cleanCss())
+		// .pipe(cleanCss())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(config.output.path))
 		.pipe(browserSync.stream());

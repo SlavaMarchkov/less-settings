@@ -1,7 +1,42 @@
-@color: green;
+@myVar: #ff0000;
+@darkenVar: darken(@myVar, 20%);
+@newVar: @myVar + #111; // #ff1111
 
-.test {
-  background-color: @color;
-  font-size: 40px;
-  color: #ffffff;
+@selector: test;
+@field: color;
+
+@color: red;
+@cVar: 'color';
+@newCVar: @@cVar;
+
+.testCVar {
+    color: @newCVar;
+}
+
+body {
+    background-color: @newVar;
+}
+
+.@{selector} {
+    background-@{field}: red;
+}
+
+#@{selector} {
+    @{field}: red;
+}
+
+@scope: 1;
+
+.testScope2 {
+    @scope: 2;
+    .testScope3 {
+        @scope: 3;
+        value: @scope;
+        @scope: 4;
+    }
+    value: @scope;
+}
+
+.testScope {
+    value: @scope; // 1
 }
