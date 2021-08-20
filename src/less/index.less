@@ -1,42 +1,118 @@
-@myVar: #ff0000;
-@darkenVar: darken(@myVar, 20%);
-@newVar: @myVar + #111; // #ff1111
-
-@selector: test;
-@field: color;
-
-@color: red;
-@cVar: 'color';
-@newCVar: @@cVar;
-
-.testCVar {
-    color: @newCVar;
+/**
+3. Использование миксинов
+*/
+@average: 100%;
+.mixin() {
+    @width: 50px;
+    @height: 300px;
 }
-
-body {
-    background-color: @newVar;
+.mixin2(@a, @b) {
+    @average: ((@a + @b) / 2);
 }
-
-.@{selector} {
-    background-@{field}: red;
-}
-
-#@{selector} {
-    @{field}: red;
-}
-
-@scope: 1;
-
-.testScope2 {
-    @scope: 2;
-    .testScope3 {
-        @scope: 3;
-        value: @scope;
-        @scope: 4;
+.mixin3(@padding, @width: 97%) {
+    .padWidth(@color: #000) {
+        padding: @padding;
+        width: @width;
+        color: @color;
     }
-    value: @scope;
+}
+.test3 {
+    .mixin3(30px, 400px);
+    .padWidth(#ddd);
+    & .test4 {
+        .padWidth(#ccc);
+    }
+}
+.test {
+    .mixin;
+    width: @width;
+    height: @height;
+}
+.test2 {
+    .mixin2(30px, 50px);
+    width: @average;
 }
 
-.testScope {
-    value: @scope; // 1
+/**
+2. Миксины как функции
+
+.mixin(@radius, @padding) {
+    border-radius: @radius;
+    padding: @padding;
 }
+.mixin(@radius) {
+    border-radius: @radius;
+}
+.mixin(@radius, @padding, @width: 100%) {
+    border-radius: @radius;
+    padding: @padding;
+    width: @width;
+}
+.mixin2(@width: 1px, @type: solid, @color: #000) {
+    border: @arguments;
+}
+.test {
+    .mixin(25px, 10px);
+}
+.test2 {
+    .mixin(@width: 50%, @padding: 4rem, @radius: 6px);
+}
+.test3 {
+    .mixin2(@width: 3px);
+}
+
+1. Миксины
+
+.mixin() {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    & .div {
+        color: #bbb;
+    }
+}
+.test {
+    .mixin;
+}
+.test2 {
+    .mixin !important;
+}
+*.mixin() {
+    .red {
+        color: red;
+    }
+    .blue {
+        color: blue;
+    }
+}
+.test {
+    .mixin > .red;
+    font-size: 10px;
+}
+.test2 {
+    .mixin > .blue;
+}
+.bgc() {
+    background-color: red;
+    font-size: 10px;
+    font-weight: bold;
+    &:hover {
+        color: green;
+    }
+    & > div {
+        display: inline-flex;
+        &:active {
+            font-size: 18px;
+        }
+    }
+}
+
+.test {
+    .bgc;
+    font-size: 20px;
+}
+
+.test2 {
+    .bgc;
+}
+*/
