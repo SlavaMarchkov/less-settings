@@ -1,118 +1,65 @@
 /**
-3. Использование миксинов
-*/
-@average: 100%;
-.mixin() {
-    @width: 50px;
-    @height: 300px;
-}
-.mixin2(@a, @b) {
-    @average: ((@a + @b) / 2);
-}
-.mixin3(@padding, @width: 97%) {
-    .padWidth(@color: #000) {
-        padding: @padding;
-        width: @width;
-        color: @color;
-    }
-}
-.test3 {
-    .mixin3(30px, 400px);
-    .padWidth(#ddd);
-    & .test4 {
-        .padWidth(#ccc);
-    }
-}
-.test {
-    .mixin;
-    width: @width;
-    height: @height;
-}
-.test2 {
-    .mixin2(30px, 50px);
-    width: @average;
-}
+Наследование через &
+ */
 
-/**
-2. Миксины как функции
-
-.mixin(@radius, @padding) {
-    border-radius: @radius;
-    padding: @padding;
-}
-.mixin(@radius) {
-    border-radius: @radius;
-}
-.mixin(@radius, @padding, @width: 100%) {
-    border-radius: @radius;
-    padding: @padding;
-    width: @width;
-}
-.mixin2(@width: 1px, @type: solid, @color: #000) {
-    border: @arguments;
-}
 .test {
-    .mixin(25px, 10px);
-}
-.test2 {
-    .mixin(@width: 50%, @padding: 4rem, @radius: 6px);
-}
-.test3 {
-    .mixin2(@width: 3px);
-}
+    display: block;
 
-1. Миксины
+    &.div {
+        font-size: 20px;
 
-.mixin() {
-    font-size: 20px;
-    color: #fff;
-    font-weight: bold;
-    & .div {
-        color: #bbb;
-    }
-}
-.test {
-    .mixin;
-}
-.test2 {
-    .mixin !important;
-}
-*.mixin() {
-    .red {
-        color: red;
-    }
-    .blue {
-        color: blue;
-    }
-}
-.test {
-    .mixin > .red;
-    font-size: 10px;
-}
-.test2 {
-    .mixin > .blue;
-}
-.bgc() {
-    background-color: red;
-    font-size: 10px;
-    font-weight: bold;
-    &:hover {
-        color: green;
-    }
-    & > div {
-        display: inline-flex;
-        &:active {
-            font-size: 18px;
+        span {
+            text-decoration: underline;
         }
     }
 }
 
-.test {
-    .bgc;
-    font-size: 20px;
+ul {
+    list-style: none;
+
+    & & {
+        margin-left: 20px;
+    }
 }
 
-.test2 {
-    .bgc;
+.b-button {
+    display: inline-block;
+
+    &__add, &__red {
+        border: 1px solid black;
+        &:hover {
+            color: aquamarine;
+        }
+        &:focus {
+            color: chocolate;
+        }
+    }
+    &__edit {
+        border: 1px solid green;
+    }
+    &__delete {
+        border: 1px solid blue;
+    }
 }
-*/
+
+.d-button {
+    display: flex;
+
+    & .inner {
+        color: #cccccc;
+    }
+
+    .outer & {
+        color: cornflowerblue;
+    }
+}
+
+.x-button {
+    display: flex;
+    & .inner {
+        font-size: 20px;
+        .outer & {
+            color: hotpink;
+        }
+    }
+}
