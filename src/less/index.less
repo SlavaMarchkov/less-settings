@@ -1,8 +1,37 @@
-@headerHeight: 50px;
-@headerPadding: 10px;
-@baseColor: #224466;
-.text {
-    height: (@headerHeight + @headerPadding) - 3px;
-    width: 200px - 30;
-    color: @baseColor * 2;
+/*.btn {
+    display: inline;
+    background-color: blueviolet;
+    color: #ffffff;
+
+    & .btn_red {
+        font-weight: bold;
+    }
+}
+
+.button__date {
+    &:extend(.btn .btn_red, .btn);
+    border-radius: 6px;
+}*/
+
+.btn {
+    display: inline;
+    color: red;
+}
+
+#id {
+    font-weight: bold;
+
+    .test2 & {
+        border: 1px solid black;
+    }
+}
+
+.e .btn {
+    font-weight: bold;
+}
+
+.button__date {
+    &:extend(.btn all, #id, .test2 #id);
+    border-radius: 3px;
+    color: blueviolet;
 }
