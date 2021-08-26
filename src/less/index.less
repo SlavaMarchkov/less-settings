@@ -1,37 +1,5 @@
-/*.btn {
-    display: inline;
+.test {
     background-color: blueviolet;
     color: #ffffff;
-
-    & .btn_red {
-        font-weight: bold;
-    }
-}
-
-.button__date {
-    &:extend(.btn .btn_red, .btn);
-    border-radius: 6px;
-}*/
-
-.btn {
-    display: inline;
-    color: red;
-}
-
-#id {
-    font-weight: bold;
-
-    .test2 & {
-        border: 1px solid black;
-    }
-}
-
-.e .btn {
-    font-weight: bold;
-}
-
-.button__date {
-    &:extend(.btn all, #id, .test2 #id);
-    border-radius: 3px;
-    color: blueviolet;
+    width: ~"calc(100% - 10px)";
 }
