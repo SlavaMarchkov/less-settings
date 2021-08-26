@@ -1,65 +1,8 @@
-/**
-Наследование через &
- */
-
-.test {
-    display: block;
-
-    &.div {
-        font-size: 20px;
-
-        span {
-            text-decoration: underline;
-        }
-    }
-}
-
-ul {
-    list-style: none;
-
-    & & {
-        margin-left: 20px;
-    }
-}
-
-.b-button {
-    display: inline-block;
-
-    &__add, &__red {
-        border: 1px solid black;
-        &:hover {
-            color: aquamarine;
-        }
-        &:focus {
-            color: chocolate;
-        }
-    }
-    &__edit {
-        border: 1px solid green;
-    }
-    &__delete {
-        border: 1px solid blue;
-    }
-}
-
-.d-button {
-    display: flex;
-
-    & .inner {
-        color: #cccccc;
-    }
-
-    .outer & {
-        color: cornflowerblue;
-    }
-}
-
-.x-button {
-    display: flex;
-    & .inner {
-        font-size: 20px;
-        .outer & {
-            color: hotpink;
-        }
-    }
+@headerHeight: 50px;
+@headerPadding: 10px;
+@baseColor: #224466;
+.text {
+    height: (@headerHeight + @headerPadding) - 3px;
+    width: 200px - 30;
+    color: @baseColor * 2;
 }
