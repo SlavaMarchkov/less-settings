@@ -1,5 +1,21 @@
-.test {
-    background-color: blueviolet;
-    color: #ffffff;
-    width: ~"calc(100% - 10px)";
+/*.loop(@i) when (@i > 0) {
+    width: @i * 10px;
+    .loop(@i - 1);
 }
+
+.test {
+    .loop(5);
+}*/
+
+// сетка Bootstrap в цикле
+.generateBootstrap(@n, @name, @i: 1) when (@i <= @n) {
+    .col-@{name}-@{i} {
+        width: ((@i * 100%) / @n);
+    }
+    .generateBootstrap(@n, @name, @i + 1);
+}
+.generateBootstrap(12, xs);
+.generateBootstrap(12, sm);
+.generateBootstrap(12, md);
+.generateBootstrap(12, lg);
+.generateBootstrap(12, xl);
