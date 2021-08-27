@@ -1,13 +1,8 @@
-@import (less) "css.css";
-//@import (once) "css.css";
-//@import (multiple) "css.css";
-//@import "new";
+// https://lesscss.org/functions/
 
-@import "params";
+@mainColor: green;
 
 .test {
-    width: @viewWidth;
-    color: @mainColor;
-    font-weight: bold;
-    font-size: 30px;
+    background-color: darken(@mainColor, 20%);
+    width: ceil((100% / 3));
 }
